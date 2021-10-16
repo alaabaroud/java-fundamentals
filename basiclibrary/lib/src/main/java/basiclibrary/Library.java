@@ -3,9 +3,16 @@
  */
 package basiclibrary;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+
+import org.checkerframework.common.value.qual.ArrayLen;
+
 public class Library {
     public static void main(String[] args) {
-        System.out.println("hello");
+        // System.out.println("hello");
         roll(6);
     }
 
@@ -25,14 +32,34 @@ public class Library {
         boolean value = false;
         // int[] newAarray = {2,4,11,5,6};
         for (int i = 0; i < array.length; i++) {
-            if (i == i*2) {
-                value= true;
-              System.out.println(true);
+            for (int j = i+1; j < array.length; j++) {
+                if (array[i]== array[j]) {
+                    value= true;
+                  System.out.println(true);
+                }
             }
             
             
         }
         return value;
     }
-
+public double avg(int[] Array){
+    int sum = 0;
+    for (int i = 0; i < Array.length; i++) {
+        sum = sum+ Array[i];
+    } 
+    double avarage = (double) sum/ Array.length;
+    return avarage;
+}
+public int[] lowavarage(int[][]arr){
+    ArrayList<Double> average= new ArrayList<>();
+    for (int i = 0; i < arr.length; i++) {
+        double sum= 0;
+        for (int j = 0; j < arr[i].length; j++) {
+            sum = sum+arr[i][j];
+        }
+        average.add(sum/ arr[i].length);
+    }
+    return arr[average.indexOf(Collections.min(average))];
+}
 }
