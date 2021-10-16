@@ -5,8 +5,9 @@
 package lab1;
 import java.util.Random;
 
-import java.sql.Time;
-import java.text.BreakIterator;
+
+// import java.sql.Time;
+// import java.text.BreakIterator;
 // LocalDateTime.now() method
 import java.time.*;
 
@@ -31,39 +32,43 @@ public class App {
         int turtleCount = 0;
         System.out.println("I own " + turtleCount + " " + pluralize("turtle", turtleCount) + ".");
 
-        // clock();
+        clock();
         flipNHeads(2);
 
     }
 
     public static void flipNHeads(int n) {
-        Random rand = new Random();
-        int upperbound = 1;
-        double random=rand.nextDouble();
-        // double random = (int) Math.floor(Math.random() * (1 - 0 + 1) + 0);
-        System.out.println(random);
-        if (random < 0.5) {
-            System.out.println("Head");
-
-        } else {
+       int counter=0;
+       int heads =0;
+       while (heads<n){
+           Random random = new Random();
+           if (random.nextDouble()<0.5) {
+            counter++;
+            heads=0;
             System.out.println("tail");
-        }
-
-        while (random < .5) {
-continue;
-        }
+           }
+           else {
+               counter++;
+               heads++;
+               System.out.println("heads");
+           }
+       }
+       System.out.println("It took " + counter + " flips to flip " + n + " heads in a row.");
 
     }
 
     public static void clock() {
         while (true) {
             LocalDateTime now = LocalDateTime.now();
+            int hour = LocalDateTime.now().getHour();
+            int minute = LocalDateTime.now().getMinute();
 
             int second = now.getSecond();
             while (second == LocalDateTime.now().getSecond()) {
                 continue;
             }
             System.out.println(now);
+            System.out.println(hour + ":" + minute + ":" + second + "   ");
         }
         // LocalDateTime now = LocalDateTime.now();
         // System.out.println(now);
